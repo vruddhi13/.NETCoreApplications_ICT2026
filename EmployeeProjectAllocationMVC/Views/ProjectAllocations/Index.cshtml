@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EmployeeProjectAllocationMVC.Models.ProjectAllocation>
+
+@{
+    ViewData["Title"] = "Project Allocations";
+}
+
+<h2>Project Allocation List</h2>
+
+<!-- 🔍 Search -->
+<form method="get">
+    <input type="text"
+           name="searchProject"
+           placeholder="Search by Project Name"
+           class="form-control"
+           style="width:300px; display:inline;" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<br />
+
+<!-- 📋 Data -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Project</th>
+            <th>Employee</th>
+            <th>Allocation Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Pro.ProName</td>
+                <td>@item.Emp.EmpName</td>
+                <td>@item.AllocationDate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProAllocateId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProAllocateId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProAllocateId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>

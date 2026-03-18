@@ -1,0 +1,31 @@
+﻿@model List<Tuple<int, string, string, int, decimal>>
+
+<h2>Vehicle List</h2>
+
+<a asp-action="Create">Add Vehicle</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach(var v in Model)
+    {
+        <tr>
+            <td>@v.Item1</td>
+            <td>@v.Item2</td>
+            <td>@v.Item3</td>
+            <td>@v.Item4</td>
+            <td>@v.Item5</td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@v.Item1">Edit</a>
+                <a asp-action="Delete" asp-route-id="@v.Item1">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,28 @@
+﻿@model Tuple<int,string,string,int,decimal>
+
+<h2>Edit Vehicle</h2>
+
+<form method="post">
+    <div>
+        <label>Vehicle Id</label><br />
+        <input type="number" name="id" value="@Model.Item1" readonly />
+    </div>
+    <div>
+        <label>Brand</label><br />
+        <input type="text" name="brand" value="@Model.Item2" />
+    </div>
+    <div>
+        <label>Model</label><br />
+        <input type="text" name="model" value="@Model.Item3" />
+    </div>
+    <div>
+        <label>Year</label><br />
+        <input type="number" name="year" value="@Model.Item4" />
+    </div>
+    <div>
+        <label>Price</label><br />
+        <input type="number" name="price" value="@Model.Item5" />
+    </div>
+    <br />
+    <button type="submit">Update</button>
+</form>

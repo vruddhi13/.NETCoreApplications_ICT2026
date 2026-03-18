@@ -1,0 +1,6 @@
+@Assign3_Q2_CoreAPI_EntityFramework_HostAddress = http://localhost:5163
+
+GET {{Assign3_Q2_CoreAPI_EntityFramework_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,47 @@
+﻿@model ProjectAllocationSystem_ICT2_Assignment2_38Q2.ViewModel.EmployeeSearch
+
+<h2>Search Employee</h2>
+
+<form method="get" style="margin-bottom:20px;">
+    <input type="text" name="employeeName" value="@Model.EmployeeName" placeholder="Enter Employee Name" style="padding:5px; width:250px;" />
+    <button type="submit" style="padding:5px 15px;">Search</button>
+</form>
+
+@if (Model.Employee != null)
+{
+    <h4>Employee Information</h4>
+    <p><strong>Name:</strong> @Model.Employee.EmpName</p>
+    <p><strong>Email:</strong> @Model.Employee.EmpEmail</p>
+    <p><strong>Department:</strong> @Model.Employee.EmpDepartment</p>
+    <p><strong>Designation:</strong> @Model.Employee.EmpDesignation</p>
+
+    @if (Model.Allocations != null && Model.Allocations.Any())
+    {
+        <h4>Project Allocations</h4>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Allocated Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var alloc in Model.Allocations)
+                {
+                    <tr>
+                        <td>@alloc.Project.ProjectName</td>
+                        <td>@alloc.AllocatedDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>This employee has no project allocations.</p>
+    }
+}
+else if (!string.IsNullOrEmpty(Model.EmployeeName))
+{
+    <p>No employee found with the name "@Model.EmployeeName".</p>
+}
